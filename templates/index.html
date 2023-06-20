@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- Custom style -->
+    <style>
+        body {
+            font-family: sans-serif;            
+            background-color: black;
+            color: white;
+            width: 200px;
+            text-align: center;
+            margin: 0 20%;
+            padding: 0 20%;
+        }
+
+        .todo {
+            border: 1px solid white;
+        }
+
+        form {
+            border-bottom: 1px solid white;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <div class="todo"> 
+        <!-- task input -->
+        <form action="/add" method="post">
+            <input type="text" name="task" placeholder="New task" required>
+            <input type="submit" value="+">
+        </form>
+        <!-- display task -->
+        <div class="task">
+            {% for task in tasks %}
+                <form action="/delete" method="post">
+                    <p><input type="checkbox" name="dtask" id="" value="{{ task.task }}" onclick="submit()">
+                    {{ task.task }}</p>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
